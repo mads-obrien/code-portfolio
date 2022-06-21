@@ -18,11 +18,11 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 # import custom gridify functions
-os.chdir('C:\\Users\\maobrien\\Documents\\GitHub\\ogim-msat\\functions')
+os.chdir('C:\\path\\to\\functions')
 from gridify import *  # load custom functions
 
 # Set current working directory
-os.chdir("C:\\Users\\maobrien\\OneDrive - MethaneSAT, LLC")
+os.chdir("C:\\path\\to\\workingdirectory")
 
 
 # Variables to define at start
@@ -33,7 +33,7 @@ lw_grid = 5000  # length and width in meters of desired grid squares
 
 
 ExportWhenDone = True    # Switch to "turn on" the 'Export to shapefile' line at the end of this script
-output_filepath = 'C:\\Users\\maobrien\\Desktop\\scratch\\overlap_testing\\'
+output_filepath = 'C:\\path\\scratch\\overlap_testing\\'
 
 
 # =============================================================================
@@ -43,7 +43,7 @@ output_filepath = 'C:\\Users\\maobrien\\Desktop\\scratch\\overlap_testing\\'
 basin = gpd.read_file(r"raw_data\basins\Neuquen_Argentina_.shp")
 
 # Load OGIM data
-fp = 'C:\\Users\\maobrien\\Environmental Defense Fund - edf.org\\Mark Omara - Infrastructure_Mapping_Project\\Bottom-Up-Infra-Inventory\\Analysis\\Results\\OGIM_NA_SA_v1a\\OGIM_NA_SA_v1_DP\\OGIM_NA_SA_v1b_.gpkg'
+fp = 'C:\\path\\OGIM_NA_SA_v1b_.gpkg'
 ogim_points = gpd.read_file(fp, layer='Wells')
 print('OGIM points successfully loaded')
 # To speed up processing time, filter to just the records in the countries or states covered by the basin geometry
@@ -54,7 +54,7 @@ ogim_points = ogim_points[ogim_points.COUNTRY=='Argentina']
 
 # list columns you want to keep in the very large Enverus spreadsheet
 columnlist = ['Well ID','Country','Operator Int Name','Well Classification','Deviation Type','Technical Status','Content Status','Spud Date','Latitude (DD)','Longitude (DD)']
-fp2 = 'C:\\Users\\maobrien\\Environmental Defense Fund - edf.org\\Mark Omara - Infrastructure_Mapping_Project\\Bottom-Up-Infra-Inventory\\Proprietary_Data\\Enverus_Drillinginfo\\DI_International_\\DI_int_Wells_CustomTable_.csv'
+fp2 = 'C:\\path\\Proprietary_Data\\Enverus_Drillinginfo\\DI_int_Wells_CustomTable_.csv'
 # read in enverus CSV using only specified columns
 enverus_points_table = pd.read_csv(fp2, usecols=columnlist)
 # OPTIONAL: filter records if desired to reduce GDF size)
